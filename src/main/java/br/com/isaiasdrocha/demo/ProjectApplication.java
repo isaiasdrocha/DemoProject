@@ -2,9 +2,10 @@ package br.com.isaiasdrocha.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.web.config.EnableSpringDataWebSupport;
 
 @SpringBootApplication
-//@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
+@EnableSpringDataWebSupport
 public class ProjectApplication {
 
 	public static void main(String[] args) {
