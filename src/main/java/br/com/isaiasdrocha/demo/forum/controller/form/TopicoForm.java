@@ -1,6 +1,5 @@
 package br.com.isaiasdrocha.demo.forum.controller.form;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -17,7 +16,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class TopicoForm {
 
-	@NotNull @NotBlank  @NotEmpty @Size(min = 5)
+	@NotNull
+	/* @NotBlank */ @NotEmpty @Size(min = 5)
 	private String titulo;
 	
 	@NotNull @NotEmpty @Size(min = 10)
