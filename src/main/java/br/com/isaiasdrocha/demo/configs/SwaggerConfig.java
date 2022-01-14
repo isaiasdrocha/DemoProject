@@ -1,5 +1,6 @@
 package br.com.isaiasdrocha.demo.configs;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,10 +14,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
-public class SwaggerConfig /* extends WebMvcConfigurationSupport */ {
+public class SwaggerConfig {
    
-	//@Value("${app.version}")
-	private String appVersion = "0.0.1-SNAPSHOT";
+	@Value("${info.app.version}")
+	private String appVersion;// = "0.0.1-SNAPSHOT";
 	
 	@Bean
     public Docket productApi() {
@@ -40,5 +41,5 @@ public class SwaggerConfig /* extends WebMvcConfigurationSupport */ {
                 .licenseUrl("http://javainuse.com")
                 .build();
     }
-	
+
 }

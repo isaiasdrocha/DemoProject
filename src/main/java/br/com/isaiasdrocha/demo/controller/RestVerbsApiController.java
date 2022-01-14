@@ -26,19 +26,16 @@ public class RestVerbsApiController implements RestVerbsApi {
 
 	@Override
 	public ResponseEntity<?> methdPost(String param1) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public ResponseEntity<?> methDelete(String param1) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public ResponseEntity<?> methPut(String param1) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

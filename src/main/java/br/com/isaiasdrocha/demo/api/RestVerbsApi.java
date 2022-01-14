@@ -11,14 +11,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import br.com.isaiasdrocha.demo.domain.MessageResponse;
 import br.com.isaiasdrocha.demo.domain.SuccessResponse;
 import br.com.isaiasdrocha.demo.enums.EnumParam;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
-@Api(value = "{version}")
-@RequestMapping(path = {"/api"}, produces = {MediaType.APPLICATION_JSON_VALUE})
+//@Api(value = "{version}")
+//@RequestMapping(path = {"/api"}, produces = {MediaType.APPLICATION_JSON_VALUE})
 public interface RestVerbsApi {
 
 	@ApiOperation(value = "Title and object", nickname = "nickname method", notes = "Method objects is ...", response = SuccessResponse.class)
@@ -73,5 +72,5 @@ public interface RestVerbsApi {
 	@RequestMapping(value = "/methodPut/subject", method = RequestMethod.PUT, produces = {MediaType.APPLICATION_JSON_VALUE})
     ResponseEntity<?> methPut(
     	    @RequestParam(value = "param1", required = true) String param1);
-	
+
 }
