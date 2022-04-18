@@ -49,17 +49,18 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests()
-		.antMatchers(HttpMethod.GET, "/topicos").permitAll()
-		.antMatchers(HttpMethod.GET, "/topicos/*").permitAll()
-		.antMatchers(HttpMethod.GET, "/h2-console/**").permitAll()
-		.antMatchers("/h2-console/**").permitAll() //console H2
-		.antMatchers(HttpMethod.POST, "/auth").permitAll()
-		//.antMatchers(HttpMethod.GET, "/actuator/**").permitAll()
-		.anyRequest().authenticated()
-		.and().csrf().disable()
-		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-		.and().addFilterBefore(new AutenticacaoTokenFilter(tokenService, usuarioRepository), UsernamePasswordAuthenticationFilter.class);
-		
+				.antMatchers(HttpMethod.GET, "/topicos").permitAll()
+				.antMatchers(HttpMethod.GET, "/topicos/*").permitAll()
+				.antMatchers(HttpMethod.GET, "/h2-console/**").permitAll()
+				.antMatchers("/h2-console/**").permitAll() //console H2
+				.antMatchers(HttpMethod.POST, "/auth").permitAll()
+				//.antMatchers(HttpMethod.GET, "/actuator/**").permitAll()
+				.anyRequest().authenticated()
+				.and().csrf().disable()
+				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+				.and().headers().frameOptions().disable()
+				.and().addFilterBefore(new AutenticacaoTokenFilter(tokenService, usuarioRepository), UsernamePasswordAuthenticationFilter.class);
+
 		//console H2
 		//http.csrf().ignoringAntMatchers("/h2-console/**");
         //this will allow frames with same origin which is much more safe
@@ -71,10 +72,11 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter{
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		//super.configure(web);
-		web.ignoring().antMatchers("/**.html", "/v2/api-docs", "/webjars/**", "/configuration/**", "/swagger-resources/**");
+		web.ignoring().antMatchers(
+				"/**.html",
+				"/v2/api-docs",
+				"/webjars/**",
+				"/configuration/**",
+				"/swagger-resources/**");
 	}
-	
-//	public static void main(String[] args) {
-//		System.out.println(new BCryptPasswordEncoder().encode("123456"));
-//	}
 }
